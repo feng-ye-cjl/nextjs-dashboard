@@ -1,6 +1,7 @@
 import Form from '@/app/ui/invoices/edit-form';
 import Breadcrumbs from '@/app/ui/invoices/breadcrumbs';
 import {fetchCustomers, fetchInvoiceById} from '@/app/lib/data';
+import {notFound} from "next/navigation";
 
 export default async function Page({params}: { params: { id: string } }) {
     // 发票id
@@ -10,6 +11,11 @@ export default async function Page({params}: { params: { id: string } }) {
         fetchInvoiceById(id),
         fetchCustomers(),
     ]);
+    console.log('invoice = ', invoice)
+    // 404处理
+    if (!invoice) {
+        notFound()
+    }
     return (
         <main>
             <Breadcrumbs

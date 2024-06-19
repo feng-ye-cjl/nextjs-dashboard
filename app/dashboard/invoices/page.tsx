@@ -6,7 +6,12 @@ import {lusitana} from '@/app/ui/fonts';
 import {InvoicesTableSkeleton} from '@/app/ui/skeletons';
 import {Suspense} from 'react';
 import {fetchInvoicesPages} from "@/app/lib/data";
+import {Metadata} from 'next';
 
+// 导出元数据
+export const metadata: Metadata = {
+    title: 'Invoices',
+};
 // 设置searchParams props
 export default async function Page({searchParams,}: {
     searchParams?: {
